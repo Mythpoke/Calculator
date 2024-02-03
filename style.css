@@ -33,7 +33,7 @@ body {
     border-radius: 15px;
 }
 
-.buttons {
+.buttonsContainer {
     height: 500px;
     width: 400px;
     display: flex;
@@ -43,40 +43,19 @@ body {
     border-radius: 15px;
     margin-top: 25px;
     box-sizing: content-box;
-    /* border: solid red; */
 }
 
-.topRow {
-    display: flex;
-    justify-content: space-evenly;
-    gap: 5px;
-    flex-wrap: wrap;
-    margin-bottom: 5px;
-    width: 100%;
-}
-
-.middleRow {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5px;
-    
-}
-
-.bottomRow {
+.buttons {
     display: flex;
     justify-content: center;
-    gap: 5px;
+    align-items: center;
     flex-wrap: wrap;
-    margin-top: 5px;
-    width: 100%;
-    justify-content: space-evenly;
-    
+    gap: 5px;
 }
 
 .button {
     width: 95px;
     height: 95px;
-    /* border: solid red; */
+    border: solid black;
     border-radius: 15px;
 }
