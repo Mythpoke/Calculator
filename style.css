@@ -31,6 +31,12 @@ body {
     width: 400px;
     background-color: rgb(214, 214, 224);
     border-radius: 15px;
+    display: flex;
+    justify-content: end;
+    align-items:end;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .buttonsContainer {
