@@ -16,12 +16,7 @@ for(let i = 0; i < 18; i++) {
     if (i === 17) button.setAttribute('style', 'width: 190px; background-color: green');
 }
 // Numbers
-let number = '';
-let numberFirst = '';
-let operator;
-let numberSecond = '';
-let valuePlus = 0;
-let valueMinus = 0;
+
 
 array2[15].addEventListener('click', () =>{
     display.textContent += '0';
@@ -64,52 +59,173 @@ array2[5].addEventListener('click', () =>{
     number += '9';
 });
 // Operators
-array2[14].addEventListener('click', () =>{
-    console.log(valuePlus);
-    valuePlus++;
-    if (valuePlus === 2) {  // zadeklarowac zmienna globalna, wstawic ja tu i przypisac jej wartosc danej liczby
-        valuePlus = 1;
-        operator = '+';
-        numberSecond = number;
-        number = '';
-        numberSecond = Number(numberSecond);
-        numberFirst = Number(numberFirst);
-        let result = operate(numberFirst, operator, numberSecond);
-        numberFirst = result;
-        display.textContent = result  + '+';
-    }
-    else if (valuePlus < 2) {
-        display.textContent += '+';
-        operator = '+';
-        numberFirst = number;
-        number = '';
-        
-    }
+// array2[14].addEventListener('click', () =>{
+    
+//     if (valuePlus === 2) {  
+//         valuePlus = 1;
+//         operator = '+';
+//         numberSecond = number;
+//         number = '';
+//         numberSecond = Number(numberSecond);
+//         numberFirst = Number(numberFirst);
+//         result = operate(numberFirst, operator, numberSecond);
+//         numberFirst = result;
+//         display.textContent = result  + '+';
+//     }
+//     else if (valuePlus < 2) {
+//         display.textContent += '+';
+//         operator = '+';
+//         numberFirst = number;
+//         number = '';
+//         valuePlus++;
+//     }
    
     
-});
-array2[10].addEventListener('click', () =>{
-    console.log(valueMinus);
-    valueMinus++;
-    if (valueMinus === 2) {
-        valueMinus = 1;
-        operator = '-';
+// });
+// array2[10].addEventListener('click', () =>{
+//     console.log(operator);
+    
+//     if (valuePlus === 1) {
+//         valuePlus = 0;
+//         numberSecond = number;
+//         number = '';
+//         numberSecond = Number(numberSecond);
+//         numberFirst = Number(numberFirst);
+//         result = operate(numberFirst, operator, numberSecond);
+//         display.textContent = result + '-';
+//         valueMinus++;
+//     }
+//    else if (valueMinus === 1) {
+//         valueMinus = 0;
+//         operator = '-';
+//         console.log(operator);
+//         numberSecond = number;
+//         number = '';
+//         numberSecond = Number(numberSecond);
+//         numberFirst = Number(numberFirst);
+//         let result = operate(numberFirst, operator, numberSecond);
+//         numberFirst = result;
+//         display.textContent = result  + '-';    
+//     }
+//     else if (valueMinus < 2) {
+//         display.textContent += '-';
+//         operator = '-';
+//         numberFirst = number;
+//         number = '';
+//         valueMinus++;
+//     }
+// });
+
+let number = '';
+let numberFirst = '';
+let operator;
+let numberSecond = '';
+let valuePlus = 0;
+let valueMinus = 0;
+let valueEqual = 0
+let result;
+
+array2[14].addEventListener('click', () => {
+   
+    if (valueMinus === 1) {
         numberSecond = number;
         number = '';
-        numberSecond = Number(numberSecond);
+
         numberFirst = Number(numberFirst);
-        let result = operate(numberFirst, operator, numberSecond);
-        numberFirst = result;
-        display.textContent = result  + '-';    
-    }
-    else if (valueMinus < 2) {
-        display.textContent += '-';
+        numberSecond = Number(numberSecond);    
+
         operator = '-';
-        numberFirst = number;
-        number = '';
+        result = operate(numberFirst, operator, numberSecond);
+        numberFirst = result;
+        display.textContent = result + '+';
+        valuePlus++;
+        valueMinus--;
         
     }
+    else if (valueEqual === 1) {
+        operator = '+';
+        numberSecond = number;
+        result = operate(numberFirst, operator, numberSecond);
+        numberFirst = result;
+        display.textContent = result + '+';
+        valueEqual--;
+        valuePlus++;
+    }
+    else if(valuePlus === 0) { 
+        numberFirst = number;
+        number = '';
+
+        display.textContent += '+';
+        operator = '+';
+        valuePlus++;
+        console.log(valuePlus + "valuePlus");
+    }
+    
+    else if(valuePlus === 1) {
+        numberSecond = number;
+        number = '';
+
+        numberFirst = Number(numberFirst);
+        numberSecond = Number(numberSecond);
+
+        operator = '+';
+        result = operate(numberFirst, operator, numberSecond);
+        numberFirst = result;
+        display.textContent = result + '+';
+    }
 });
+
+array2[10].addEventListener('click', () =>{
+    
+    if (valuePlus === 1) {
+        numberSecond = number;
+        number = '';
+
+        numberFirst = Number(numberFirst);          
+        numberSecond = Number(numberSecond);
+
+        operator = '+';
+        result = operate(numberFirst, operator, numberSecond);
+        numberFirst = result;
+        display.textContent = result + '-';
+        valuePlus--;
+        valueMinus++;
+    }
+    else if (valueEqual === 1) {
+        operator = '-';
+        numberSecond = number;
+        result = operate(numberFirst, operator, numberSecond);
+        numberFirst = result;
+        display.textContent = result + '-';
+        valueEqual--;
+        valueMinus++;
+    }
+    else if(valueMinus === 0) {
+        numberFirst = number;
+        number = '';
+
+        display.textContent += '-';
+        operator = '-';
+        valueMinus++;
+        console.log(valueMinus + "valueMinus");
+    }
+    else if(valueMinus === 1) {
+        numberSecond = number;
+        number = '';
+
+        numberFirst = Number(numberFirst);     
+        numberSecond = Number(numberSecond);
+
+        operator = '-';
+        result = operate(numberFirst, operator, numberSecond);
+        numberFirst = result;
+        display.textContent = result + '-';
+    }
+
+})
+
+
+
 array2[6].addEventListener('click', () =>{
     display.textContent += '*';
     operator = '*';
@@ -124,10 +240,21 @@ array2[2].addEventListener('click', () =>{
 });
 // Others
 array2[17].addEventListener('click', () =>{ //"="
+
+    if(valuePlus === 1) operator = '+';
+    if(valueMinus === 1) operator = '-';
+
+    valuePlus = 0;
+    valueMinus = 0; 
     numberSecond = number;
+    number = '';
     numberSecond = Number(numberSecond);
     numberFirst = Number(numberFirst);
-   display.textContent = operate(numberFirst, operator, numberSecond);
+    result = operate(numberFirst, operator, numberSecond);
+    numberFirst = result;
+    display.textContent = result;
+    valueEqual++;
+    
 });
 array2[0].addEventListener('click', () =>{  //Clear
     display.textContent = '';
@@ -136,6 +263,7 @@ array2[0].addEventListener('click', () =>{  //Clear
     numberSecond = '';
     valuePlus = 0;
     valueMinus = 0;
+    valueEqual = 0;
 });
 array2[1].addEventListener('click', () =>{  //Delete
     display.textContent = '';
