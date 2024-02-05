@@ -103,6 +103,7 @@ array2[14].addEventListener('click', () => {        //add
         valuePlus++;
     }
     else if (valueDivide === 1) {
+
         numberSecond = number;
         number = '';
 
@@ -111,6 +112,10 @@ array2[14].addEventListener('click', () => {        //add
 
         operator = '/';
         result = operate(numberFirst, operator, numberSecond);
+        if(result === Infinity) {
+            return display.textContent = "Stop";
+         }
+
         numberFirst = result;
         display.textContent = result + '+';
         valueDivide--;
@@ -185,6 +190,10 @@ array2[10].addEventListener('click', () =>{     //substract
 
         operator = '/';
         result = operate(numberFirst, operator, numberSecond);
+        if(result === Infinity) {
+            return display.textContent = "Stop";
+         }
+
         numberFirst = result;
         display.textContent = result + '-';
         valueDivide--;
@@ -260,6 +269,10 @@ array2[6].addEventListener('click', () =>{    //multiply
 
         operator = '/';
         result = operate(numberFirst, operator, numberSecond);
+        if(result === Infinity) {
+            return display.textContent = "Stop";
+         }
+
         numberFirst = result;
         display.textContent = result + '*';
         valueMultiply++;
@@ -355,12 +368,20 @@ array2[2].addEventListener('click', () =>{      //Divide
         numberSecond = Number(numberSecond);
 
         result = operate(numberFirst, operator, numberSecond);
+        if(result === Infinity) {
+            return display.textContent = "Stop";
+         }
+
         numberFirst = result;
         display.textContent = result + '/';
     }
 });
 // Others
 array2[17].addEventListener('click', () =>{ //"="
+
+    if(number === '') {
+       return display.textContent = ''; 
+    }
 
     if(valuePlus === 1) operator = '+';
     if(valueMinus === 1) operator = '-';
@@ -377,6 +398,10 @@ array2[17].addEventListener('click', () =>{ //"="
     numberSecond = Number(numberSecond);
     numberFirst = Number(numberFirst);
     result = operate(numberFirst, operator, numberSecond);
+    if(result === Infinity) {
+        return display.textContent = "Stop";
+     }
+     
     numberFirst = result;
     display.textContent = result;
     valueEqual++;
