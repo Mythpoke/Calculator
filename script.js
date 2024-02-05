@@ -59,62 +59,6 @@ array2[5].addEventListener('click', () =>{
     number += '9';
 });
 // Operators
-// array2[14].addEventListener('click', () =>{
-    
-//     if (valuePlus === 2) {  
-//         valuePlus = 1;
-//         operator = '+';
-//         numberSecond = number;
-//         number = '';
-//         numberSecond = Number(numberSecond);
-//         numberFirst = Number(numberFirst);
-//         result = operate(numberFirst, operator, numberSecond);
-//         numberFirst = result;
-//         display.textContent = result  + '+';
-//     }
-//     else if (valuePlus < 2) {
-//         display.textContent += '+';
-//         operator = '+';
-//         numberFirst = number;
-//         number = '';
-//         valuePlus++;
-//     }
-   
-    
-// });
-// array2[10].addEventListener('click', () =>{
-//     console.log(operator);
-    
-//     if (valuePlus === 1) {
-//         valuePlus = 0;
-//         numberSecond = number;
-//         number = '';
-//         numberSecond = Number(numberSecond);
-//         numberFirst = Number(numberFirst);
-//         result = operate(numberFirst, operator, numberSecond);
-//         display.textContent = result + '-';
-//         valueMinus++;
-//     }
-//    else if (valueMinus === 1) {
-//         valueMinus = 0;
-//         operator = '-';
-//         console.log(operator);
-//         numberSecond = number;
-//         number = '';
-//         numberSecond = Number(numberSecond);
-//         numberFirst = Number(numberFirst);
-//         let result = operate(numberFirst, operator, numberSecond);
-//         numberFirst = result;
-//         display.textContent = result  + '-';    
-//     }
-//     else if (valueMinus < 2) {
-//         display.textContent += '-';
-//         operator = '-';
-//         numberFirst = number;
-//         number = '';
-//         valueMinus++;
-//     }
-// });
 
 let number = '';
 let numberFirst = '';
@@ -123,9 +67,11 @@ let numberSecond = '';
 let valuePlus = 0;
 let valueMinus = 0;
 let valueEqual = 0
+let valueMultiply = 0;
+let valueDivide = 0;
 let result;
 
-array2[14].addEventListener('click', () => {
+array2[14].addEventListener('click', () => {        //add
    
     if (valueMinus === 1) {
         numberSecond = number;
@@ -142,12 +88,37 @@ array2[14].addEventListener('click', () => {
         valueMinus--;
         
     }
-    else if (valueEqual === 1) {
-        operator = '+';
+    else if (valueMultiply === 1) {
         numberSecond = number;
+        number = '';
+
+        numberFirst = Number(numberFirst);          
+        numberSecond = Number(numberSecond);
+
+        operator = '*';
         result = operate(numberFirst, operator, numberSecond);
         numberFirst = result;
         display.textContent = result + '+';
+        valueMultiply--;
+        valuePlus++;
+    }
+    else if (valueDivide === 1) {
+        numberSecond = number;
+        number = '';
+
+        numberFirst = Number(numberFirst);          
+        numberSecond = Number(numberSecond);
+
+        operator = '/';
+        result = operate(numberFirst, operator, numberSecond);
+        numberFirst = result;
+        display.textContent = result + '+';
+        valueDivide--;
+        valuePlus++;
+    }
+    else if (valueEqual === 1) {
+        operator = '+';
+        display.textContent = result + '+';                 
         valueEqual--;
         valuePlus++;
     }
@@ -175,7 +146,7 @@ array2[14].addEventListener('click', () => {
     }
 });
 
-array2[10].addEventListener('click', () =>{
+array2[10].addEventListener('click', () =>{     //substract
     
     if (valuePlus === 1) {
         numberSecond = number;
@@ -191,11 +162,36 @@ array2[10].addEventListener('click', () =>{
         valuePlus--;
         valueMinus++;
     }
-    else if (valueEqual === 1) {
-        operator = '-';
+    else if (valueMultiply === 1) {
         numberSecond = number;
+        number = '';
+
+        numberFirst = Number(numberFirst);          
+        numberSecond = Number(numberSecond);
+
+        operator = '*';
         result = operate(numberFirst, operator, numberSecond);
         numberFirst = result;
+        display.textContent = result + '-';
+        valueMultiply--;
+        valueMinus++;
+    }
+    else if (valueDivide === 1) {
+        numberSecond = number;
+        number = '';
+
+        numberFirst = Number(numberFirst);          
+        numberSecond = Number(numberSecond);
+
+        operator = '/';
+        result = operate(numberFirst, operator, numberSecond);
+        numberFirst = result;
+        display.textContent = result + '-';
+        valueDivide--;
+        valueMinus++;
+    }
+    else if (valueEqual === 1) {
+        operator = '-';
         display.textContent = result + '-';
         valueEqual--;
         valueMinus++;
@@ -207,7 +203,6 @@ array2[10].addEventListener('click', () =>{
         display.textContent += '-';
         operator = '-';
         valueMinus++;
-        console.log(valueMinus + "valueMinus");
     }
     else if(valueMinus === 1) {
         numberSecond = number;
@@ -226,26 +221,157 @@ array2[10].addEventListener('click', () =>{
 
 
 
-array2[6].addEventListener('click', () =>{
-    display.textContent += '*';
-    operator = '*';
-    numberFirst = number;
-    number = '';
+array2[6].addEventListener('click', () =>{    //multiply
+    
+    if (valuePlus === 1) {
+        numberSecond = number;
+        number = '';
+
+        numberFirst = Number(numberFirst);          
+        numberSecond = Number(numberSecond);
+
+        operator = '+';
+        result = operate(numberFirst, operator, numberSecond);
+        numberFirst = result;
+        display.textContent = result + '*';
+        valuePlus--;
+        valueMultiply++;
+    }
+    else if (valueMinus === 1) {
+        numberSecond = number;
+        number = '';
+
+        numberFirst = Number(numberFirst);
+        numberSecond = Number(numberSecond);    
+
+        operator = '-';
+        result = operate(numberFirst, operator, numberSecond);
+        numberFirst = result;
+        display.textContent = result + '*';
+        valueMultiply++;
+        valueMinus--;
+    }
+    else if (valueDivide === 1) {
+        numberSecond = number;
+        number = '';
+
+        numberFirst = Number(numberFirst);
+        numberSecond = Number(numberSecond);    
+
+        operator = '/';
+        result = operate(numberFirst, operator, numberSecond);
+        numberFirst = result;
+        display.textContent = result + '*';
+        valueMultiply++;
+        valueDivide--;
+    }
+    else if (valueEqual === 1) {
+        operator = '*';
+        display.textContent = result + '*';
+        valueEqual--;
+        valueMultiply++;
+    }
+    else if(valueMultiply === 0) {
+        numberFirst = number;
+        number = '';
+        operator = '*';
+        display.textContent += '*';
+        valueMultiply++;
+    }
+    else if(valueMultiply === 1) {
+        numberSecond = number;
+        number = '';
+
+        numberFirst = Number(numberFirst);          
+        numberSecond = Number(numberSecond);
+
+        result = operate(numberFirst, operator, numberSecond);
+        numberFirst = result;
+        display.textContent = result + '*';
+    }
 });
-array2[2].addEventListener('click', () =>{
-    display.textContent += '/';
-    operator = '/';
-    numberFirst = number;
-    number = '';
+array2[2].addEventListener('click', () =>{      //Divide
+
+    if (valuePlus === 1) {
+        numberSecond = number;
+        number = '';
+
+        numberFirst = Number(numberFirst);          
+        numberSecond = Number(numberSecond);
+
+        operator = '+';
+        result = operate(numberFirst, operator, numberSecond);
+        numberFirst = result;
+        display.textContent = result + '/';
+        valuePlus--;
+        valueDivide++;
+    }
+    else if (valueMinus === 1) {
+        numberSecond = number;
+        number = '';
+
+        numberFirst = Number(numberFirst);
+        numberSecond = Number(numberSecond);    
+
+        operator = '-';
+        result = operate(numberFirst, operator, numberSecond);
+        numberFirst = result;
+        display.textContent = result + '/';
+        valueDivide++;
+        valueMinus--;
+    }
+    else if (valueMultiply === 1) {
+        numberSecond = number;
+        number = '';
+
+        numberFirst = Number(numberFirst);
+        numberSecond = Number(numberSecond);    
+
+        operator = '*';
+        result = operate(numberFirst, operator, numberSecond);
+        numberFirst = result;
+        display.textContent = result + '/';
+        valueDivide++;
+        valueMultiply--;
+    }
+    else if (valueEqual === 1) {
+        operator = '/';
+        display.textContent = result + '/';
+        valueEqual--;
+        valueDivide++;
+    }
+    else if(valueDivide === 0) {
+        numberFirst = number;
+        number = '';
+        operator = '/';
+        display.textContent += '/';
+        valueDivide++;
+    }
+    else if(valueDivide === 1) {
+        numberSecond = number;
+        number = '';
+
+        numberFirst = Number(numberFirst);          
+        numberSecond = Number(numberSecond);
+
+        result = operate(numberFirst, operator, numberSecond);
+        numberFirst = result;
+        display.textContent = result + '/';
+    }
 });
 // Others
 array2[17].addEventListener('click', () =>{ //"="
 
     if(valuePlus === 1) operator = '+';
     if(valueMinus === 1) operator = '-';
+    if(valueMultiply === 1) operator = '*';
+    if(valueDivide === 1) operator = '/';
 
     valuePlus = 0;
     valueMinus = 0; 
+    valueMultiply = 0;
+    valueDivide = 0;
+
     numberSecond = number;
     number = '';
     numberSecond = Number(numberSecond);
@@ -264,6 +390,8 @@ array2[0].addEventListener('click', () =>{  //Clear
     valuePlus = 0;
     valueMinus = 0;
     valueEqual = 0;
+    valueMultiply = 0;
+    valueDivide = 0;
 });
 array2[1].addEventListener('click', () =>{  //Delete
     display.textContent = '';
