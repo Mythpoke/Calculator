@@ -111,7 +111,7 @@ array2[14].addEventListener('click', () => {        //add
         numberSecond = Number(numberSecond);
 
         operator = '/';
-        result = operate(numberFirst, operator, numberSecond);
+        result = Number(operate(numberFirst, operator, numberSecond).toPrecision(2));
         if(result === Infinity) {
             return display.textContent = "Stop";
          }
@@ -189,7 +189,7 @@ array2[10].addEventListener('click', () =>{     //substract
         numberSecond = Number(numberSecond);
 
         operator = '/';
-        result = operate(numberFirst, operator, numberSecond);
+        result = Number(operate(numberFirst, operator, numberSecond).toPrecision(2));
         if(result === Infinity) {
             return display.textContent = "Stop";
          }
@@ -268,7 +268,7 @@ array2[6].addEventListener('click', () =>{    //multiply
         numberSecond = Number(numberSecond);    
 
         operator = '/';
-        result = operate(numberFirst, operator, numberSecond);
+        result = Number(operate(numberFirst, operator, numberSecond).toPrecision(2));
         if(result === Infinity) {
             return display.textContent = "Stop";
          }
@@ -367,7 +367,7 @@ array2[2].addEventListener('click', () =>{      //Divide
         numberFirst = Number(numberFirst);          
         numberSecond = Number(numberSecond);
 
-        result = operate(numberFirst, operator, numberSecond);
+        result = Number(operate(numberFirst, operator, numberSecond).toPrecision(2));
         if(result === Infinity) {
             return display.textContent = "Stop";
          }
@@ -397,7 +397,7 @@ array2[17].addEventListener('click', () =>{ //"="
     number = '';
     numberSecond = Number(numberSecond);
     numberFirst = Number(numberFirst);
-    result = operate(numberFirst, operator, numberSecond);
+    result = Number(operate(numberFirst, operator, numberSecond).toPrecision(2));
     if(result === Infinity) {
         return display.textContent = "Stop";
      }
