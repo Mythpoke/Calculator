@@ -72,7 +72,7 @@ let valueDivide = 0;
 let result;
 
 array2[14].addEventListener('click', () => {        //add
-   
+
     if (valueMinus === 1) {
         numberSecond = number;
         number = '';
@@ -123,6 +123,9 @@ array2[14].addEventListener('click', () => {        //add
     }
     else if (valueEqual === 1) {
         operator = '+';
+        result = result.toString();
+        result += number;
+        numberFirst = result;
         display.textContent = result + '+';                 
         valueEqual--;
         valuePlus++;
@@ -201,7 +204,10 @@ array2[10].addEventListener('click', () =>{     //substract
     }
     else if (valueEqual === 1) {
         operator = '-';
-        display.textContent = result + '-';
+        result = result.toString();
+        result += number;
+        numberFirst = result;
+        display.textContent = result + '-';   
         valueEqual--;
         valueMinus++;
     }
@@ -280,7 +286,10 @@ array2[6].addEventListener('click', () =>{    //multiply
     }
     else if (valueEqual === 1) {
         operator = '*';
-        display.textContent = result + '*';
+        result = result.toString();
+        result += number;
+        numberFirst = result;
+        display.textContent = result + '*';   
         valueEqual--;
         valueMultiply++;
     }
@@ -349,7 +358,10 @@ array2[2].addEventListener('click', () =>{      //Divide
     }
     else if (valueEqual === 1) {
         operator = '/';
-        display.textContent = result + '/';
+        result = result.toString();
+        result += number;
+        numberFirst = result;
+        display.textContent = result + '/';   
         valueEqual--;
         valueDivide++;
     }
@@ -379,9 +391,9 @@ array2[2].addEventListener('click', () =>{      //Divide
 // Others
 array2[17].addEventListener('click', () =>{ //"="
 
-    if(number === '') {
-       return display.textContent = ''; 
-    }
+    // if(number === '') {
+    //    return display.textContent = ''; 
+    // }
 
     if(valuePlus === 1) operator = '+';
     if(valueMinus === 1) operator = '-';
@@ -404,8 +416,8 @@ array2[17].addEventListener('click', () =>{ //"="
      
     numberFirst = result;
     display.textContent = result;
+
     valueEqual++;
-    
 });
 array2[0].addEventListener('click', () =>{  //Clear
     display.textContent = '';
